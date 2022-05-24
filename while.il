@@ -13,8 +13,12 @@
    ldc.i8 10
    stloc max
 
-   //br L1
 L1:ldloc i
+   ldloc max
+   clt
+   brfalse L2
+ 
+   ldloc i
    call void  [mscorlib]System.Console::Write(int64)
 
    ldstr " "
@@ -24,12 +28,10 @@ L1:ldloc i
    ldc.i8 1
    add
    stloc i
+   br L1
+   
 
-   ldloc i
-   ldloc max
-   cgt
-   brfalse L1
-   ret
+L2:ret
 
 
    //
